@@ -1,0 +1,21 @@
+name: Snowflake CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check SQL files
+        run: |
+          echo "Checking Snowflake SQL files..."
+          ls -la sql
+          echo "SQL files found:"
+          find sql -type f -name "*.sql"
